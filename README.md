@@ -6,4 +6,4 @@ In pdfs you can find the exercises instructions (DK.0016.Homework 2021.pdf) and 
 
 In scripts you can find the coding solutions.
 
-In outputs you can find several plots.
+In outputs you can find the plots.

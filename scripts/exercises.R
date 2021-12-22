@@ -102,3 +102,29 @@ boxplot(
     ylab = "BMI",
     col = "#5d7c4d"
 )
+
+#--------------------------------------------------------------
+#-----6-----
+# Are the sporting and health associated?
+# Test, visualize and comment the result.
+
+prop.table(table(
+    students$sport,
+    students$health),
+    1
+    )
+chisq.test(table(
+    students$sport,
+    students$health),
+    simulate = TRUE
+    )
+
+windows(6, 6)
+plot(
+    table(students$sport, students$health),
+    las = 1,
+    main = "Health of students based on sports frequency",
+    xlab = "Sports frequency",
+    ylab = "Health",
+    col = c("#5d7c4d", "#dddb62", "#e2a759", "#ce3c3c")
+)

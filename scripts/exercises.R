@@ -13,9 +13,11 @@ windows()
 par(mfrow = c(2, 1))
     hist(bmi[gender == "1"],
         xlab = "BMI",
-        main = "BMI of women"
+        main = "BMI of women",
+        col = "#DDAAC4"
         )
      hist(bmi[gender == "2"],
         xlab = "BMI",
-        main = "BMI of men"
+        main = "BMI of men",
+        col = "#AAC7DD"
         )

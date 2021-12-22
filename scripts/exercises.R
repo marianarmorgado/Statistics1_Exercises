@@ -150,3 +150,15 @@ chisq.test(
         students$beer[students$gender == 2]),
     simulate = TRUE
 )
+
+windows(7, 6)
+plot(
+    table(
+        students$sport[students$gender == 2],
+        students$beer[students$gender == 2]),
+    las = 1,
+    main = "Frequency of sports vs Frequency of beer in male students",
+    xlab = "Sports frequency",
+    ylab = "Number of beers",
+    col = c("#FCF5B3", "#FFF489", "#FFF060", "#FFEB29", "#FFE700")
+)

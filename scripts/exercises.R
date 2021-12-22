@@ -108,15 +108,17 @@ boxplot(
 # Are the sporting and health associated?
 # Test, visualize and comment the result.
 
-prop.table(table(
-    students$sport,
-    students$health),
-    1
+prop.table(
+    table(
+        students$sport,
+        students$health),
+        1
     )
-chisq.test(table(
-    students$sport,
-    students$health),
-    simulate = TRUE
+chisq.test(
+    table(
+        students$sport,
+        students$health),
+        simulate = TRUE
     )
 
 windows(6, 6)
@@ -128,3 +130,20 @@ plot(
     ylab = "Health",
     col = c("#5d7c4d", "#dddb62", "#e2a759", "#ce3c3c")
 )
+
+#--------------------------------------------------------------
+#-----7-----
+# Are the beer consumption and sporting of male students associated?
+
+prop.table(
+    table(
+        students$sport[students$gender == 2],
+        students$beer[students$gender == 2]),
+        1
+    )
+chisq.test(
+    table(
+        students$sport[students$gender == 2],
+        students$beer[students$gender == 2]),
+        simulate = TRUE
+    )

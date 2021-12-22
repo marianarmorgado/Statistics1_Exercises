@@ -26,3 +26,17 @@ par(mfrow = c(1, 2))
         ylim = c(0, 50),
         col = "#AAC7DD"
         )
+
+#-----2-----
+# What is the average (± standard deviation) body mass index of men and women?
+
+mean(bmi [gender == 1], na.rm = TRUE)
+sd(bmi[gender == 1], na.rm = TRUE)
+mean(bmi [gender == 2], na.rm = TRUE)
+sd(bmi[gender == 2], na.rm = TRUE)
+
+# Is the difference statistically significant?...
+# ... Make the decision both based on the 95% confidence interval...
+# ... of means’ difference and based on the p-value.
+
+t.test(bmi ~ gender)

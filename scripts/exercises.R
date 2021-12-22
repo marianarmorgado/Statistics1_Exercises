@@ -111,15 +111,17 @@ boxplot(
 prop.table(
     table(
         students$sport,
-        students$health),
-        1
-    )
+        students$health
+    ),
+    1
+)
 chisq.test(
     table(
         students$sport,
-        students$health),
-        simulate = TRUE
-    )
+        students$health
+    ),
+    simulate = TRUE
+)
 
 windows(6, 6)
 plot(
@@ -138,12 +140,13 @@ plot(
 prop.table(
     table(
         students$sport[students$gender == 2],
-        students$beer[students$gender == 2]),
-        1
-    )
+        students$beer[students$gender == 2]
+    ),
+    1
+ )
 chisq.test(
     table(
         students$sport[students$gender == 2],
         students$beer[students$gender == 2]),
-        simulate = TRUE
-    )
+    simulate = TRUE
+)

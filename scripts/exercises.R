@@ -1,7 +1,7 @@
 load(url("http://ph.emu.ee/~ktanel/DK_0016/students.RData"))
 
 #--------------------------------------------------------------
-#-----1--------------------------------------------------------
+#-----1-----
 # Calculate the students’ body mass index (as a new variable)...
 
 students$bmi <- students$weight / ((students$height / 100)^2)
@@ -18,17 +18,17 @@ par(mfrow = c(1, 2))
         xlim = c(15, 40),
         ylim = c(0, 200),
         col = "#DDAAC4"
-        )
+    )
      hist(students$bmi[students$gender == "2"],
         main = "BMI of men",
         xlab = "BMI",
         xlim = c(15, 40),
         ylim = c(0, 50),
         col = "#AAC7DD"
-        )
+    )
 
 #--------------------------------------------------------------
-#-----2--------------------------------------------------------
+#-----2-----
 # What is the average (± standard deviation) body mass index of men and women?
 
 mean(students$bmi [students$gender == 1], na.rm = TRUE)
@@ -43,7 +43,7 @@ sd(students$bmi[students$gender == 2], na.rm = TRUE)
 t.test(bmi ~ gender, data = students)
 
 #--------------------------------------------------------------
-#-----3--------------------------------------------------------
+#-----3-----
 # Create a new variable ’sport01’ with value zero,
 # if student does not practice sport (sport=1), and value one,
 # if student practices sport (sport>1).
@@ -67,7 +67,7 @@ prop.test(
 prop.test(535, 660, p = 0.75)
 
 #--------------------------------------------------------------
-#-----4--------------------------------------------------------
+#-----4-----
 # What about the percentage of sporting students among men and women?
 # Are these proportions statistically significantly different?
 
@@ -78,4 +78,27 @@ table(
 prop.test(
     c(408, 127),
     c(408 + 103, 127 + 21)
+)
+
+#--------------------------------------------------------------
+#-----5-----
+# Are the body mass index and sporting associated?
+# Test the statistical significance of body mass index difference
+# between sporting and non-sporting students.
+
+t.test(
+    students$bmi[students$sport01==1],
+    students$bmi[students$sport01==0]
+)
+
+# Visualize the result
+
+windows()
+boxplot(
+    bmi ~ sport01,
+    data = students,
+    names=c("no sporting","sporting"),
+    xlab = "students",
+    ylab = "BMI",
+    col = "#7BB161"
 )

@@ -2,11 +2,11 @@ load(url("http://ph.emu.ee/~ktanel/DK_0016/students.RData"))
 
 #--------------------------------------------------------------
 #-----1-----
-# Calculate the students’ body mass index (as a new variable)...
+# Calculate the students’ body mass index (as a new variable)
 
 students$bmi <- students$weight / ((students$height / 100)^2)
 
-# ... and study its distribution separately for men and women
+# and study its distribution separately for men and women
 # Does the body mass index follow the normal distribution?
 
 summary(students$bmi)
@@ -36,9 +36,9 @@ sd(students$bmi[students$gender == 1], na.rm = TRUE)
 mean(students$bmi [students$gender == 2], na.rm = TRUE)
 sd(students$bmi[students$gender == 2], na.rm = TRUE)
 
-# Is the difference statistically significant?...
-# ... Make the decision both based on the 95% confidence interval...
-# ... of means’ difference and based on the p-value.
+# Is the difference statistically significant?
+# Make the decision both based on the 95% confidence interval
+# of means’ difference and based on the p-value.
 
 t.test(bmi ~ gender, data = students)
 
@@ -47,7 +47,7 @@ t.test(bmi ~ gender, data = students)
 # Create a new variable ’sport01’ with value zero,
 # if student does not practice sport (sport=1), and value one,
 # if student practices sport (sport>1).
-# ou can use the following command:
+# You can use the following command:
 
 students$sport01 <- factor(
     students$sport,
@@ -87,18 +87,18 @@ prop.test(
 # between sporting and non-sporting students.
 
 t.test(
-    students$bmi[students$sport01==1],
-    students$bmi[students$sport01==0]
+    students$bmi[students$sport01 == 1],
+    students$bmi[students$sport01 == 0]
 )
 
 # Visualize the result
 
-windows()
+windows(6, 6)
 boxplot(
     bmi ~ sport01,
     data = students,
-    names=c("no sporting","sporting"),
+    names = c("non-sporting", "sporting"),
     xlab = "students",
     ylab = "BMI",
-    col = "#7BB161"
+    col = "#5d7c4d"
 )

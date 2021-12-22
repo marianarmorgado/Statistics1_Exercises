@@ -10,8 +10,8 @@ students$bmi <- students$weight / ((students$height / 100)^2)
 
 attach(students)
 summary(bmi)
-windows(8, 10)
-par(mfrow = c(2, 1))
+windows(8, 4)
+par(mfrow = c(1, 2))
     hist(bmi[gender == "1"],
         main = "BMI of women",
         xlab = "BMI",

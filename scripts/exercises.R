@@ -162,3 +162,30 @@ plot(
     ylab = "Number of beers",
     col = c("#FCF5B3", "#FFF489", "#FFF060", "#FFEB29", "#FFE700")
 )
+
+#--------------------------------------------------------------
+#-----8-----
+# Create a new variable ’smoke012’ with value zero,
+# if the student does not smoke (smoking=1),
+# one, if the student no longer smokes but has smoked (smoking=2),
+# and two, if the student
+# smokes (smoking>2). Does the smoking depend on gender?
+# Visualize the result.
+
+
+#--------------------------------------------------------------
+#-----9-----
+# Are student body mass index and systolic and diastolic blood pressure related?
+# Whether these relationships are different between men and women
+# (no statistical significance testing of
+# difference is required, but you can visualize the results)?
+
+
+#--------------------------------------------------------------
+#-----10-----
+# Predict students’ systolic blood pressure based on gender and body mass index.
+# Illustrate the result of the modeling.
+# What is the expected systolic blood pressure of male and female students
+# with a body mass index of 20 points? But with body mass index of 25 points?
+# Is it necessary to  consider also the gender by body mass index interaction?
+# But sporting and/or smoking?

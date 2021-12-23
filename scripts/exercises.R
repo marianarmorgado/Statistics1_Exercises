@@ -174,6 +174,34 @@ plot(
 # smokes (smoking>2). Does the smoking depend on gender?
 # Visualize the result.
 
+students$smoking <- factor(students$smoking)
+levels(students$smoking)
+students$smoke012 <- factor(
+    students$smoking,
+    levels = c(1, 2, 3, 4, 5, 6, 7),
+    labels = c("0", "1", "2", "2", "2", "2", "2")
+)
+prop.table(
+    table(students$gender, students$smoke012),
+    1
+)
+chisq.test(
+    table(students$gender, students$smoke012),
+    simulate = TRUE
+)
+students$gendernames <- factor(
+    students$gender,
+    levels = 1:2,
+    labels = c("women", "men")
+)
+windows(6, 6)
+plot(
+    table(students$smoke012, students$gendernames),
+    main = "Smoking in female and male students",
+    xlab = "smoking status",
+    ylab = "gender",
+    col = c("#DDAAC4", "#AAC7DD")
+)
 
 #--------------------------------------------------------------
 #-----9-----

@@ -209,7 +209,55 @@ plot(
 # Whether these relationships are different between men and women
 # (no statistical significance testing of
 # difference is required, but you can visualize the results)?
+install.packages("corrplot")
+library("corrplot")
 
+# all students
+cor(
+    x = students [, c("bmi", "SVR", "DVR")],
+    use = "complete.obs"
+)
+correlations <- cor(
+    x = students [, c("bmi", "SVR", "DVR")],
+    use = "complete.obs"
+)
+windows(6, 6)
+corrplot(
+    correlations,
+    method = "square",
+)
+
+# female students
+students_f <- students[students$gender == "1", ]
+cor(
+    x = students_f [, c("bmi", "SVR", "DVR")],
+    use = "complete.obs"
+)
+correlations_f <- cor(
+    x = students_f [, c("bmi", "SVR", "DVR")],
+    use = "complete.obs"
+)
+windows(6, 6)
+corrplot(
+    correlations_f,
+    method = "square",
+)
+
+# male students
+students_m <- students[students$gender == "2", ]
+cor(
+    x = students_m [, c("bmi", "SVR", "DVR")],
+    use = "complete.obs"
+)
+correlations_m <- cor(
+    x = students_m [, c("bmi", "SVR", "DVR")],
+    use = "complete.obs"
+)
+windows(6, 6)
+corrplot(
+    correlations_m,
+    method = "square",
+)
 
 #--------------------------------------------------------------
 #-----10-----

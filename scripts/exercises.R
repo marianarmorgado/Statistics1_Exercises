@@ -209,7 +209,6 @@ plot(
 # Whether these relationships are different between men and women
 # (no statistical significance testing of
 # difference is required, but you can visualize the results)?
-install.packages("corrplot")
 library("corrplot")
 
 # all students
@@ -267,3 +266,80 @@ corrplot(
 # with a body mass index of 20 points? But with body mass index of 25 points?
 # Is it necessary to  consider also the gender by body mass index interaction?
 # But sporting and/or smoking?
+
+model1 <- lm(SVR ~ gender + bmi, data = students)
+summary(model1)
+
+windows()
+par(mfrow = c(2, 2))
+    plot(model1, 1)
+    plot(model1, 2)
+    plot(model1, 4)
+    plot(model1, 5)
+
+pred_svr_bmi20_f <- predict(
+    model1,
+    data.frame(bmi = 20, gender = 1)
+)
+
+pred_svr_bmi20_m <- predict(
+    model1,
+    data.frame(bmi = 20, gender = 2)
+)
+
+pred_svr_bmi25_f <- predict(
+    model1,
+    data.frame(bmi = 25, gender = 1)
+)
+
+pred_svr_bmi25_m <- predict(
+    model1,
+    data.frame(bmi = 25, gender = 2)
+)
+
+windows()
+plot(
+    SVR ~ bmi,
+    data = students,
+    xlab = "BMI"
+)
+    points(
+        x = 20,
+        y = pred_svr_bmi20_f,
+        col = "#DDAAC4",
+        pch = 16,
+        cex = 2
+    )
+    points(
+        x = 20,
+        y = pred_svr_bmi20_m,
+        col = "#AAC7DD",
+        pch = 16,
+        cex = 2
+    )
+    points(
+        x = 25,
+        y = pred_svr_bmi25_f,
+        col = "#DDAAC4",
+        pch = 18,
+        cex = 3
+    )
+    points(
+        x = 25,
+        y = pred_svr_bmi25_m,
+        col = "#AAC7DD",
+        pch = 18,
+        cex = 3
+    )
+
+model2 <- lm(SVR ~ gender * bmi, data = students)
+summary(model2)
+
+anova(model1, model2)
+sqrt(56185 / 437) # model 1
+sqrt(56176 / 436) # model 2
+
+model3 <- lm(SVR ~ gender + bmi + sport + smoking, data = students)
+summary(model3)
+
+step_model3 <- step(model3, direction = "both")

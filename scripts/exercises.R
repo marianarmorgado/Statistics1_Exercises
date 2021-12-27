@@ -285,10 +285,6 @@ corrplot(
 #-----10-----
 # Predict students’ systolic blood pressure based on gender and body mass index.
 # Illustrate the result of the modeling.
-# What is the expected systolic blood pressure of male and female students
-# with a body mass index of 20 points? But with body mass index of 25 points?
-# Is it necessary to  consider also the gender by body mass index interaction?
-# But sporting and/or smoking?
 
 model1 <- lm(SVR ~ gender + bmi, data = students)
 summary(model1)
@@ -299,6 +295,10 @@ par(mfrow = c(2, 2))
     plot(model1, 2)
     plot(model1, 4)
     plot(model1, 5)
+
+
+# What is the expected systolic blood pressure of male and female students
+# with a body mass index of 20 points? But with body mass index of 25 points?
 
 pred_svr_bmi20_f <- predict(
     model1,
@@ -355,12 +355,18 @@ plot(
         cex = 3
     )
 
+
+# Is it necessary to  consider also the gender by body mass index interaction?
+
 model2 <- lm(SVR ~ gender * bmi, data = students)
 summary(model2)
 
 anova(model1, model2)
 sqrt(56185 / 437) # model 1
 sqrt(56176 / 436) # model 2
+
+
+# But sporting and/or smoking?
 
 model3 <- lm(SVR ~ gender + bmi + sport + smoking, data = students)
 summary(model3)

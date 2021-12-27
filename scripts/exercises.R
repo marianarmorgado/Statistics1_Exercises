@@ -10,22 +10,45 @@ students$bmi <- students$weight / ((students$height / 100)^2)
 # Does the body mass index follow the normal distribution?
 
 summary(students$bmi)
-windows(8, 4)
-par(mfrow = c(1, 2))
+windows(8, 8)
+par(mfrow = c(2, 2))
     hist(students$bmi[students$gender == "1"],
-        main = "BMI of women",
+        main = "Female students BMI",
         xlab = "BMI",
-        xlim = c(15, 40),
-        ylim = c(0, 200),
-        col = "#DDAAC4"
+        col = "#DDAAC4",
+        freq = FALSE
     )
+        curve(
+            dnorm(
+                x, mean = mean(students$bmi[students$gender == "1"], na.rm = T),
+                sd = sd(students$bmi[students$gender == "1"], na.rm = T)
+            ),
+            add = T
+        )
+
      hist(students$bmi[students$gender == "2"],
-        main = "BMI of men",
+        main = "Male students BMI",
         xlab = "BMI",
-        xlim = c(15, 40),
-        ylim = c(0, 50),
-        col = "#AAC7DD"
+        col = "#AAC7DD",
+        freq = FALSE
     )
+        curve(
+            dnorm(
+                x, mean = mean(students$bmi[students$gender == "2"], na.rm = T),
+                sd = sd(students$bmi[students$gender == "2"], na.rm = T)
+            ),
+            add = T
+        )
+    qqnorm(
+        students$bmi[students$gender == "1"],
+        main = "Normal Q-Q Plot female students BMI"
+    )
+        qqline(students$bmi[students$gender == "1"])
+    qqnorm(
+        students$bmi[students$gender == "2"],
+        main = "Normal Q-Q Plot male students BMI"
+    )
+        qqline(students$bmi[students$gender == "2"])
 
 #--------------------------------------------------------------
 #-----2-----
